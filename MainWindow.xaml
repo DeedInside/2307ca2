@@ -54,7 +54,11 @@
                 <DockPanel>
                     <Button DockPanel.Dock="Top" Content="top 2" FontSize="50"/>
                     <Button DockPanel.Dock="Top" Content="top 1" FontSize="50"/>
-                    <Button DockPanel.Dock="Left" Width="150" Content="left" FontSize="50"/>
+                    <TabControl DockPanel.Dock="Left" Width="150">
+                        <TabItem Header="1">
+                            
+                        </TabItem>
+                    </TabControl>
                     <Button DockPanel.Dock="Right" Content="right" FontSize="50"/>
                     <Button DockPanel.Dock="Bottom" Content="bottom" FontSize="50"/>
                     <Button Content="5" FontSize="50"/>
@@ -98,6 +102,66 @@
                         <Button Content="4"/>
                     </WrapPanel>
                 </WrapPanel>
+            </TabItem>
+            <TabItem Header="11.09">
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <Border Background="GhostWhite" BorderBrush="Silver" BorderThickness="3" CornerRadius="8,8,3,3">
+                            <Label Background="Bisque" FontSize="40" Content="вывод текста"/>
+                        </Border>
+                        <TextBlock Name="tBlock" Text="вывод текста" Width="300"
+                                   TextWrapping="Wrap"/>
+                        <TextBox Name="tBox" TextWrapping="Wrap" Width="300" VerticalScrollBarVisibility="Visible" Height="200"/>
+                        <Button Content="ЖМЯК" Click="Button_Click"/>
+                        <Button Content="Ok" Click="Button_Click_1"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="18.09">
+                <StackPanel>
+                    <StackPanel>
+                        <CheckBox Content="выбор 1" IsChecked="False" 
+                                  Checked="CheckBox_Checked"
+                                  Unchecked="CheckBox_Unchecked"/>
+                        <StackPanel Name="StackPanelInpyt" 
+                                    Orientation="Horizontal" 
+                                    Visibility="Collapsed">
+                            <Label Content="inpyt"/>
+                            <TextBox Width="100" Margin="10 0 0 0"/>
+                        </StackPanel>
+                        <CheckBox Content="выбор 2" IsChecked="False"/>
+                        <CheckBox Content="выбор 3" IsChecked="{x:Null}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Expander Header="выдвинуть список">
+                            <StackPanel>
+                                <RadioButton GroupName="1" Content="выбор 1" 
+                                             Checked="RadioButton_Checked"
+                                             ToolTip="подсказка для первого выбора"/>
+                                <RadioButton GroupName="1" Content="выбор 2" 
+                                             Checked="RadioButton_Checked">
+                                    <RadioButton.ToolTip>
+                                        <StackPanel>
+                                            <Label Content="описание"/>
+                                            <Button Content="ЖМЯК"/>
+                                        </StackPanel>
+                                    </RadioButton.ToolTip>
+                                </RadioButton>
+                                <RadioButton GroupName="2" Content="выбор 3"/>
+                                <RadioButton GroupName="2" Content="выбор 4"/>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                    <StackPanel>
+                        <ListBox Name="ListBoxUser" SelectionChanged="ListBoxUser_SelectionChanged"/>
+                        <Button Content="Add user" Click="Add_user"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <ComboBox Name="ComboBoxUserName" 
+                                  SelectionChanged="selected_user_name"
+                                  SelectedIndex="0"/>
+                    </StackPanel>
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>
