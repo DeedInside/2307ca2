@@ -52,7 +52,16 @@
             </TabItem>
             <TabItem Header="DockPanel">
                 <DockPanel>
-                    <Button DockPanel.Dock="Top" Content="top 2" FontSize="50"/>
+                    <Menu DockPanel.Dock="Top" FontSize="30">
+                        <MenuItem Header="Файл">
+                            <MenuItem Header="Настройки" Click="MenuItem_edit"/>
+
+
+                        </MenuItem>
+                        <MenuItem Header="Правки">
+                            
+                        </MenuItem>
+                    </Menu>
                     <Button DockPanel.Dock="Top" Content="top 1" FontSize="50"/>
                     <TabControl DockPanel.Dock="Left" Width="150">
                         <TabItem Header="1">
@@ -153,13 +162,47 @@
                         </Expander>
                     </StackPanel>
                     <StackPanel>
-                        <ListBox Name="ListBoxUser" SelectionChanged="ListBoxUser_SelectionChanged"/>
+                        <ListBox Name="ListBoxUser" ItemsSource="{Binding users}" SelectionChanged="ListBoxUser_SelectionChanged"/>
                         <Button Content="Add user" Click="Add_user"/>
                     </StackPanel>
                     <StackPanel>
                         <ComboBox Name="ComboBoxUserName" 
                                   SelectionChanged="selected_user_name"
                                   SelectedIndex="0"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="01.10">
+                <StackPanel>
+                    <ListView Name="ListViewUser" ItemsSource="{Binding users}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn>
+                                    <!--header-->
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Name"/>
+                                        <StackPanel Height="20" Width="20" Background="DarkBlue"/>
+                                    </StackPanel>
+                                    <!--ячейки-->
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="value"/>
+                                                <Label Content="{Binding Name}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel DataContext="{Binding ElementName=ListViewUser, Path=SelectedItem}">
+                        <TextBox Text="{Binding Id}"/>
+                        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Text="{Binding Email}"/>
+                       
                     </StackPanel>
                 </StackPanel>
             </TabItem>

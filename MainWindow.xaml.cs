@@ -6,18 +6,19 @@ namespace _2307ca2
 {
     public partial class MainWindow : Window
     {
-        List<User> users;
+        public List<User> users { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            
+            this.DataContext = this;
+
             users = new List<User>()
             {
                 new User("name 1", "email", "pass"),
                 new User("name 2", "email", "pass"),
                 new User("name 3", "email", "pass"),
             };
-            ListBoxUser.ItemsSource = users;
+            
             ComboBoxUserName.ItemsSource = ConverUserToName(users);
         }
 
@@ -76,7 +77,7 @@ namespace _2307ca2
         {
             ListBox list = sender as ListBox;
 
-            MessageBox.Show(list.SelectedItem.ToString());
+            //MessageBox.Show(list.SelectedItem.ToString());
         }
 
         private void Add_user(object sender, RoutedEventArgs e)
@@ -89,7 +90,7 @@ namespace _2307ca2
         {
             ComboBox box = sender as ComboBox;
 
-            MessageBox.Show(box.SelectedItem.ToString());
+            //MessageBox.Show(box.SelectedItem.ToString());
         }
         public List<string> ConverUserToName(List<User> user)
         {
@@ -100,6 +101,11 @@ namespace _2307ca2
                 result.Add(item.Name);
             }
             return result;
+        }
+
+        private void MenuItem_edit(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Настройки");
         }
     }
 }
